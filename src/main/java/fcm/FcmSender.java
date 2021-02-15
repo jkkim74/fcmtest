@@ -11,6 +11,7 @@ public class FcmSender  extends Sender{
 
 	public FcmSender(String key) {
 		super(key);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
