@@ -7,13 +7,12 @@ import java.net.URLConnection;
 
 import com.google.android.gcm.server.Sender;
 
-public class FcmSender  extends Sender{
+public class FcmSender extends Sender {
 
 	public FcmSender(String key) {
 		super(key);
 		// TODO Auto-generated constructor stub
 	}
-
 	@Override
 	protected HttpURLConnection getConnection(String url) throws IOException {
 		
@@ -25,7 +24,5 @@ public class FcmSender  extends Sender{
 		// TODO Auto-generated method stub
 		return (HttpURLConnection)connection;
 	}
-	
-	
 
 }

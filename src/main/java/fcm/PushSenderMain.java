@@ -12,7 +12,7 @@ import com.google.android.gcm.server.Sender;
 public class PushSenderMain {
 
 	public static void main(String[] args) throws Exception {
-		String tokenInfo = "eho3j9bFQf29-fFZgOK0hY:APA91bG-LmpAGnnDneaLCh13MoINKgoXTOQ10b-_AIMYD0nthrBLEn92ErGntWmRGUrfseFWlfvmw9vMPGJ_apvFMMCv96N6wevmtEqrAG7FmcSsH8gAIQuy1mPB2YQQxz6o_Bd6BnLs";
+		String tokenInfo = "d_d3XJ9VTwW8BdPCnZ3-kV:APA91bH4i0DTVT3-tuh7wfN0yyQL_kdiYn5CJXhnsZxVXEFxBIVXlssZQZ5ESc1g_m52s8lHYt4KomUGVQ1Af7BXyqp8zk9nPIwkCRRt5gelYgRCDKG7ayNjGSPtwHLRCbSrM-4rLivf";
         // tokenInfo = "dxZV4B3aR_qyNSB8JWB957:APA91bFHyH8eNNOQm73jFUQNdxLmqqW7iDdCm36suMV764GwTLDC0qVlNY59NaQxhyzesa5i7ksqvc_DtatmN98nB_kQ5hNd3X3GcDqqM_Nf4JFZAfnVX8nT7ehKlUTRv4O3_VzgY2xa";
 		String serverKey = "AAAAZzYfxCM:APA91bG9Eq6385gx17z_7PMPr6I89i9StG58UeMhRWAl7SsRy6pQqQnHTWz4E1M_ndC13M5RK0b4ZPZuBgma-YhZqTbDHnHzJVVDEidt5ExTQ21EpXgifZ-5OT5itluGTzXRJBIMPdPL";
 		// TODO Auto-generated method stub
@@ -20,9 +20,10 @@ public class PushSenderMain {
 		idList.add(tokenInfo);
 		
 		Message msg = buildMessage().build();
-		Sender sender = new FcmSender(serverKey);
-		MulticastResult resultList = sender.sendNoRetry(msg, idList);
+		IosFcmSender sender = new IosFcmSender(serverKey);
+		FcmMulticastResult resultList = sender.sendFcmNoRetry(msg, idList);
 		
+		System.out.println(resultList);
 		System.out.println("######################### Fcm Send Succenss #################");
 
 	}
@@ -30,8 +31,8 @@ public class PushSenderMain {
 	private static Builder buildMessage() throws UnsupportedEncodingException{
 		Builder builder = new Message.Builder();
 		builder.addData("pushId", "1212112212212");
-		builder.addData("title", "TEST_title");
-		builder.addData("message", "TEST_message");
+		builder.addData("title", "TEST_title22");
+		builder.addData("message", "TEST_message22");
 		return builder;
 		
 	}
