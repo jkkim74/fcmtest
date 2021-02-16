@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class FcmResult implements Serializable {
 
-	  private final String messageId;
+	private static final long serialVersionUID = 1L;
+	private final String messageId;
 	  private final String canonicalRegistrationId;
 	  private final String errorCode;
 
