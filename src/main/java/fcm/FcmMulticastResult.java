@@ -3,7 +3,6 @@ package fcm;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import com.google.android.gcm.server.Result;
 
 public class FcmMulticastResult {
 	  private final int success;
