@@ -31,7 +31,7 @@ public class PushSenderMain {
 	private static Builder buildMessage() throws UnsupportedEncodingException{
 		Builder builder = new Message.Builder();
 		builder.addData("pushId", "1212112212212");
-		builder.addData("title", "TEST_title33");
+		builder.addData("title", "<광고>뮤지컬<고스트>단독 최대 50% 할인!");
 		builder.addData("message", "TEST_message33");
 		return builder;
 		

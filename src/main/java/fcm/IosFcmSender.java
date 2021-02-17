@@ -113,16 +113,6 @@ public class IosFcmSender{
 		    }
 		    return argument;
 	}
-	
-  /**
-   * Sets a JSON field, but only if the value is not {@literal null}.
-   */
-  private void setJsonField(Map<Object, Object> json, String field,
-      Object value) {
-    if (value != null) {
-      json.put(field, value);
-    }
-  }
   
   private Number getNumber(Map<?, ?> json, String field) {
 	    Object value = json.get(field);
@@ -154,7 +144,7 @@ public class IosFcmSender{
 	    if (url == null || body == null) {
 	      throw new IllegalArgumentException("arguments cannot be null");
 	    }
-	    byte[] bytes = body.getBytes();
+	    byte[] bytes = body.getBytes("UTF-8");
 	    HttpURLConnection conn = getConnection(url);
 	    conn.setDoOutput(true);
 	    conn.setUseCaches(false);
