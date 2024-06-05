@@ -6,8 +6,9 @@ public final class FcmConstants {
   /**
    * Endpoint for sending messages.
    */
-  public static final String FCM_SEND_ENDPOINT =
-      "https://fcm.googleapis.com/fcm/send";
+  //public static final String FCM_SEND_ENDPOINT = "https://fcm.googleapis.com/fcm/send";
+
+  public static final String FCM_SEND_ENDPOINT = "https://fcm.googleapis.com/v1/projects/fcm-message-f6d13/messages:send";
 
   /**
    * HTTP parameter for registration id.

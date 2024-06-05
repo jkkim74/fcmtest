@@ -1,0 +1,19 @@
+{
+  "message":
+  {
+    "collapse_key": "1",
+    "data": {
+      "appName": "",
+      "content": "대용량 푸시테스트_ HTTPV1",
+      "badge": "1",
+      "linkurl": "",
+      "landingInfo": "{\"tab\":\"otWeb\",\"title\":\"대용량 푸시테스트_ HTTPV1\",\"url\":\"https:\/\/kt.com\"}",
+      "image": "https:\/\/dev.ybox.kt.com\/img\/push\/b08080194e424be0a6379eefdbc73a8b20240604113222517.png"
+    },
+    "time_to_live": 3,
+    "mutable_content": false,
+    "dry_run": false,
+    "to": "chsRDuusQ8iFiaNal2Ruvb:APA91bG5YOjIcDUzS-7KrKDvifjK3LF-a0cUypHLq35RdyTUEIECXIa0a94q3yCPDI9rKKQYDv1MPDvO9Q0KFDgCJ-UOiogeINhgQOIZrvGpm9NQaqksOnfHukVYPbZ93EccUVRzKGnq",
+    "priority": "normal"
+  }
+}

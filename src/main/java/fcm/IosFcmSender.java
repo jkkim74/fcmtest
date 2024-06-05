@@ -12,17 +12,16 @@ import static fcm.FcmConstants.JSON_RESULTS;
 import static fcm.FcmConstants.JSON_SUCCESS;
 import static fcm.FcmConstants.TOKEN_CANONICAL_REG_ID;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.google.auth.oauth2.GoogleCredentials;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
@@ -54,14 +53,17 @@ public class IosFcmSender{
 		 jsonRequest.put(JSON_REGISTRATION_IDS, registrationIds);
 	     Map<String, String> payload = message.getData();
 	     if (!payload.isEmpty()) {
+			jsonRequest.put("topic","push send");
 	       jsonRequest.put(JSON_PAYLOAD, payload);
 	       jsonRequest.put("notification", payload);
 	     }
-	     String requestBody = JSONValue.toJSONString(jsonRequest);
+		 Map<Object, Object> jsonRequest2 = new HashMap<Object, Object>();
+		 jsonRequest2.put("message",jsonRequest);
+	     String requestBody = JSONValue.toJSONString(jsonRequest2);
 	     System.out.println("JSON request: " + requestBody);
 	     HttpURLConnection conn =
 	         post(FCM_SEND_ENDPOINT, "application/json", requestBody);
-	     
+
 	     int status = conn.getResponseCode();
 	     String responseBody;
 	     if (status != 200) {
@@ -141,6 +143,8 @@ public class IosFcmSender{
   
   protected HttpURLConnection post(String url, String contentType, String body)
 	      throws IOException {
+		//body = getTestBody();
+	  System.out.println("JSON request_test2: " + body);
 	    if (url == null || body == null) {
 	      throw new IllegalArgumentException("arguments cannot be null");
 	    }
@@ -151,7 +155,7 @@ public class IosFcmSender{
 	    conn.setFixedLengthStreamingMode(bytes.length);
 	    conn.setRequestMethod("POST");
 	    conn.setRequestProperty("Content-Type", contentType);
-	    conn.setRequestProperty("Authorization", "key=" + key);
+	    conn.setRequestProperty("Authorization", "Bearer " + key);
 	    OutputStream out = conn.getOutputStream();
 	    out.write(bytes);
 	    out.close();
@@ -180,6 +184,11 @@ public class IosFcmSender{
       content.setLength(content.length() - 1);
     }
     return content.toString();
+  }
+
+  public static String getTestBody(){
+	  String strResult = "{\"message\": {\"topic\": \"news\",\"notification\": {\"title\": \"Breaking News\",\"body\": \"New news story available.\"},\"data\": {\"story_id\": \"story_12345\"}}}";
+      return strResult;
   }
 
 }
